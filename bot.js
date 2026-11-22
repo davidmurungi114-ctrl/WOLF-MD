@@ -10,11 +10,16 @@ console.log("WOLF MD STARTING...");
 
 bot.start(async (ctx) => {
   saveMember(ctx);
-  await sendDP(ctx, `🐺 WOLF MD ALIVE! 🔥\nWelcome ${ctx.from.first_name}!\n\n👑 Owner: WOLF\n🛠️ Created By: PROFESSOR COOLGUY 🤟`);
-  await ctx.reply(`Type /menu 👆`);
+  await sendDP(ctx, `🐺 WOLF MD ALIVE! 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu for all commands!`);
 });
 
-bot.command("menu", (ctx) => { saveMember(ctx); ctx.reply(getMenuText()); });
+bot.command("menu", async (ctx) => {
+  saveMember(ctx);
+  try {
+    await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: `🐺🔥 WOLF MD - MENU 🔥🐺\n👑 Owner: WOLF\n🛠️ By: PROFESSOR COOLGUY 🤟` });
+  } catch (e) {}
+  await ctx.reply(getMenuText());
+});
 bot.command("ping", (ctx) => ctx.reply("PONG! ✅ WOLF MD IS ALIVE 🔥\n🛠️ By PROFESSOR COOLGUY 🤟"));
 bot.command("alive", async (ctx) => { saveMember(ctx); await sendDP(ctx, `🐺 WOLF MD ALIVE! 🔥\nOwner: WOLF\nBy: PROFESSOR COOLGUY 🤟\nUptime: ${getUptime()}`); });
 bot.command("runtime", (ctx) => ctx.reply(`⏱️ Uptime: ${getUptime()}`));
@@ -151,7 +156,10 @@ bot.command("tagall", async (ctx) => {
 // CHANNEL SUPPORT
 bot.on("channel_post", async (ctx) => {
   const text = (ctx.channelPost.text || "").toLowerCase();
-  if (text.includes("/menu")) await ctx.reply(getMenuText());
+  if (text.includes("/menu")) {
+    try { await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: `🐺🔥 WOLF MD - MENU 🔥🐺` }); } catch (e) {}
+    await ctx.reply(getMenuText());
+  }
   if (text.includes("/ping")) await ctx.reply("PONG! ✅ WOLF MD IS ALIVE 🔥");
   if (text.includes("/alive")) await ctx.reply(`🐺 WOLF MD ALIVE! 🔥\nOwner: WOLF\nBy: PROFESSOR COOLGUY 🤟\nUptime: ${getUptime()}`);
 });
