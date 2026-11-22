@@ -1,25 +1,34 @@
-const axios = require("axios");
-const config = require("./config");
-const groupMembers = {};
 const startTime = Date.now();
+const groupMembers = {};
 
-function saveMember(ctx) {
-  if (!ctx.chat || !ctx.from) return;
-  const c = ctx.chat.id;
-  if (!groupMembers[c]) groupMembers[c] = {};
-  groupMembers[c][ctx.from.id] = ctx.from.first_name;
-}
 function getUptime() {
   const s = Math.floor((Date.now() - startTime) / 1000);
-  return `${Math.floor(s/3600)}h ${Math.floor((s%3600)/60)}m ${s%60}s`;
+  const d = Math.floor(s / 86400);
+  const h = Math.floor((s % 86400) / 3600);
+  const m = Math.floor((s % 3600) / 60);
+  const sec = s % 60;
+  if (d > 0) return `${d}d ${h}h ${m}m ${sec}s`;
+  if (h > 0) return `${h}h ${m}m ${sec}s`;
+  if (m > 0) return `${m}m ${sec}s`;
+  return `${sec}s`;
 }
-async function sendDP(ctx, cap) {
+
+function saveMember(ctx) {
   try {
-    const img = await axios.get(config.BOT_IMAGE, { responseType: "arraybuffer", timeout: 15000, headers: { "User-Agent": "Mozilla/5.0" } });
-    await ctx.replyWithPhoto({ source: Buffer.from(img.data), filename: "wolf.jpg" }, { caption: cap });
+    if (!ctx.chat || !ctx.from) return;
+    if (ctx.chat.type === "group" || ctx.chat.type === "supergroup") {
+      if (!groupMembers[ctx.chat.id]) groupMembers[ctx.chat.id] = {};
+      groupMembers[ctx.chat.id][ctx.from.id] = ctx.from.first_name || "Member";
+    }
+  } catch (e) {}
+}
+
+async function sendDP(ctx, text) {
+  try {
+    await ctx.replyWithPhoto("https://files.catbox.moe/zyckgc.jpg", { caption: text });
   } catch (e) {
-    try { await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: cap }); }
-    catch (e2) { await ctx.reply(cap); }
+    await ctx.reply(text);
   }
 }
-module.exports = { saveMember, getUptime, sendDP, groupMembers };
+
+module.exports = { getUptime, saveMember, sendDP, groupMembers };
