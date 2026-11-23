@@ -1,5 +1,5 @@
 module.exports = {
-  BOT_TOKEN: process.env.BOT_TOKEN || "9283450194:AAHYj0NexvbxNGcmb9tkxcILdMVdt6s-ikM",
+  BOT_TOKEN: process.env.BOT_TOKEN || "9283450194:AAHfgBdpqo6UfaPzSRH12AjDmef3pe6ByHM",
   BOT_NAME: "WOLF MD",
   BOT_USERNAME: "wolf_md_coolguy_bot",
   OWNER_NAME: "PROFESSOR COOLGUY",
