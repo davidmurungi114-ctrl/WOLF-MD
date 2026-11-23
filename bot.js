@@ -7,20 +7,14 @@ const { factorial, calcEval } = require("./calc");
 const bot = new Telegraf(config.BOT_TOKEN);
 const pick = a => a[Math.floor(Math.random()*a.length)];
 const q = ctx => ctx.message.text.split(" ").slice(1).join(" ").trim();
-
-// MENU + START - 1 MESSAGE, DP + MENU TOGETHER, NO SPACE!
 bot.command("menu", async (ctx) => { saveMember(ctx); await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: getMenuText() }); });
 bot.start(async (ctx) => { saveMember(ctx); await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: getMenuText() }); });
-
-// OWNER
 bot.command("ping", ctx => ctx.reply("PONG! ✅ WOLF MD IS ALIVE 🔥\nBy PROFESSOR COOLGUY 🤟"));
 bot.command("alive", async (ctx) => { await ctx.replyWithPhoto(config.BOT_IMAGE, { caption: `🐺 WOLF MD ALIVE! 🔥\nOwner: WOLF\nBy: PROFESSOR COOLGUY 🤟\nUptime: ${getUptime()}` }); });
 bot.command("runtime", ctx => ctx.reply(`⏱️ Uptime: ${getUptime()}`));
 bot.command("owner", ctx => ctx.reply(`👑 OWNER: WOLF\nNumber: ${config.OWNER_NUMBER}\nBot: WOLF MD 🐺\n🛠️ By: PROFESSOR COOLGUY 🤟`));
 bot.command("contact", ctx => ctx.reply(`👑 Owner: WOLF - ${config.OWNER_NUMBER}\n🛠️ By: PROFESSOR COOLGUY 🤟`));
 bot.command("repo", ctx => ctx.reply(`🐺 WOLF MD REPO:\nhttps://github.com/davidmurungi114-ctrl/WOLF-MD`));
-
-// GROUP
 bot.command("welcome", ctx => ctx.reply(`Welcome ${ctx.from.first_name}! 🎉 Welcome to WOLF MD! 🐺`));
 bot.command("goodbye", ctx => ctx.reply(`Bye ${ctx.from.first_name}! 👋 Don't panic to be burnt! 🔥`));
 bot.command("groupinfo", ctx => ctx.reply(`👥 Group: ${ctx.chat.title || "Private"}\nID: ${ctx.chat.id}\nType: ${ctx.chat.type}`));
@@ -33,22 +27,14 @@ bot.command("online", ctx => ctx.reply(`🟢 ONLINE:\n${ctx.from.first_name} is 
 bot.command("hidetag", ctx => ctx.reply(`📢 HIDETAG 🐺\n\n${q(ctx) || "WOLF MD Announcement!"}\n\n👥 Everyone tagged!`));
 bot.command("tagadmins", async (ctx) => { try{ const a=await ctx.telegram.getChatAdministrators(ctx.chat.id); let m="👑 ADMINS:\n"; a.forEach(x=>{ if(!x.user.is_bot) m+=`@${x.user.username||x.user.first_name} `; }); ctx.reply(m); }catch(e){ ctx.reply("❌ Make me ADMIN first!"); }});
 bot.command("tagall", async (ctx) => { const text=q(ctx); try{ const admins=await ctx.telegram.getChatAdministrators(ctx.chat.id); let all={}; for(const a of admins){ if(!a.user.is_bot) all[a.user.id]=a.user.first_name; } const m=groupMembers[ctx.chat.id]||{}; for(const id in m) all[id]=m[id]; if(Object.keys(all).length===0) return ctx.reply("Let everyone send a message first!"); let msg=`📢 TAGALL 🐺🔥\n\n${text?text+"\n\n":""}`; for(const id in all) msg+=`<a href="tg://user?id=${id}">${String(all[id]).replace(/[<>&]/g,"")}</a> `; await ctx.reply(msg,{parse_mode:"HTML"}); }catch(e){ ctx.reply("❌ Make me ADMIN in this group!"); }});
-
-// AI - FAST, NO WAITING
 bot.command(["gpt","ai","qwen"], async (ctx) => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /gpt Who is Diamond?"); try{ const r=await axios.get("https://text.pollinations.ai/"+encodeURIComponent(t),{timeout:5000}); ctx.reply("🤖 WOLF AI:\n\n"+r.data); }catch(e){ ctx.reply(`🤖 WOLF AI: Great question bro! "${t}" — I am WOLF MD, made by PROFESSOR COOLGUY! Ask me anything! 🔥🐺`); }});
 bot.command(["imagine","flux","dalle"], async (ctx) => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /imagine a wolf in fire"); try{ await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/"+encodeURIComponent(t),{caption:`🎨 WOLF MD: ${t}`}); }catch(e){ ctx.reply("Image failed, try again!"); }});
 bot.command(["toanime","ghibli","tocartoon","topixar"], async (ctx) => { try{ await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20wolf%20boy%20cool",{caption:"🎨 Anime Style! 🐺"}); }catch(e){ ctx.reply("Try /imagine anime wolf"); }});
-
-// DOWNLOADER
 bot.command(["song","play","music","spotify"], async (ctx) => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /song Mpa Love"); try{ const r=await axios.get("https://itunes.apple.com/search?term="+encodeURIComponent(t)+"&media=music&limit=1",{timeout:5000}); const s=r.data.results[0]; if(!s) return ctx.reply("Not found 😅"); ctx.reply(`🎵 ${s.trackName}\n👤 ${s.artistName}\n🎧 Preview: ${s.previewUrl}\n▶️ YouTube: https://www.youtube.com/results?search_query=${encodeURIComponent(t)}`); }catch(e){ ctx.reply(`🎵 ${t}\n▶️ https://www.youtube.com/results?search_query=${encodeURIComponent(t)}`); }});
 bot.command(["video","movie","film"], ctx => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /movie Kill Order"); ctx.reply(`🎬 Movie: ${t}\n▶️ Trailer: https://www.youtube.com/results?search_query=${encodeURIComponent(t+" trailer")}`); });
 bot.command(["tiktok","instagram","facebook","mediafire","gitclone","apk","pinterest"], ctx => { const l=q(ctx); const cmd=ctx.message.text.split(" ")[0]; if(!l) return ctx.reply(`❌ Type: ${cmd} <link>`); ctx.reply(`${cmd} Link: ${l}\n\n🔗 Open: ${l}\n✅ WOLF MD downloader — use /song for music!`); });
-
-// AUDIO
 bot.command("tts", async (ctx) => { const t=q(ctx); if(!t) return ctx.reply("Usage: /tts Hello bro"); try{ const u="https://translate.google.com/translate_tts?ie=UTF-8&q="+encodeURIComponent(t)+"&tl=en&client=tw-ob"; const a=await axios.get(u,{responseType:"arraybuffer",headers:{"User-Agent":"Mozilla/5.0"},timeout:5000}); await ctx.replyWithAudio({source:Buffer.from(a.data),filename:"tts.mp3"},{caption:`🎤 ${t}`}); }catch(e){ ctx.reply("TTS failed, try shorter text!"); }});
 bot.command(["bass","deep","blown","fast","slow","nightcore","robot","echo","reverb"], ctx => ctx.reply(`🎚️ ${ctx.message.text.split(" ")[0]} Effect Ready!\n\nSend voice/audio with caption ${ctx.message.text.split(" ")[0]} — WOLF MD will apply it! 🐺🔥`));
-
-// CONVERTER
 bot.command("sticker", ctx => ctx.reply("🎨 Send photo with caption /sticker"));
 bot.command("toimg", ctx => ctx.reply("🖼️ Send sticker with caption /toimg"));
 bot.command("removebg", ctx => ctx.reply("✂️ Send photo with caption /removebg\nOr use: https://remove.bg"));
@@ -56,11 +42,7 @@ bot.command("upscale", ctx => ctx.reply("✨ Send photo with caption /upscale �
 bot.command(["attp","ttp","qc","brat"], async (ctx) => { const t=q(ctx)||"WOLF MD"; try{ await ctx.replyWithPhoto(`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(t)}`,{caption:`🎨 ${ctx.message.text.split(" ")[0]} for: ${t}`}); }catch(e){ ctx.reply(`🎨 ${t} 🔥`); }});
 bot.command("emojimix", ctx => ctx.reply("😂 Emojimix: 🐺+🔥 = 🐺🔥"));
 bot.command(["blur","meme","getpp","wasted","circle"], ctx => ctx.reply(`🎨 ${ctx.message.text.split(" ")[0]} — Send photo with this caption bro! 🐺`));
-
-// LOGO
 bot.command(["fancy","gfx","neon","metallic","fire","glitch","thunder","hacker","marvel","avenger"], async (ctx) => { const t=q(ctx)||"WOLF"; const cmd=ctx.message.text.split(" ")[0].replace("/",""); try{ await ctx.replyWithPhoto(`https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${encodeURIComponent(t+" "+cmd)}`,{caption:`🎨 ${cmd.toUpperCase()} LOGO: ${t} 🔥🐺`}); }catch(e){ ctx.reply(`🎨 ${cmd.toUpperCase()} LOGO: ${t} 🔥`); }});
-
-// TOOLS
 bot.command("ss", ctx => { const l=q(ctx); if(!l) return ctx.reply("❌ Type: /ss google.com"); ctx.reply(`📸 Screenshot: https://image.thum.io/get/width/800/${l}`); });
 bot.command("translate", ctx => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /translate Hello"); ctx.reply(`🔤 Translate: ${t}\nhttps://translate.google.com/?sl=auto&tl=sw&text=${encodeURIComponent(t)}`); });
 bot.command(["qr","qrcode"], async (ctx) => { const t=q(ctx); if(!t) return ctx.reply("❌ Type: /qr Hello"); try{ await ctx.replyWithPhoto(`https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=${encodeURIComponent(t)}`,{caption:`🔳 QR: ${t}`}); }catch(e){ ctx.reply("QR failed!"); }});
@@ -83,21 +65,15 @@ bot.command("imdb", ctx => { const m=q(ctx); if(!m) return ctx.reply("❌ Type: 
 bot.command("horo", ctx => { const s=q(ctx)||"Leo"; ctx.reply(`🔮 Horoscope ${s}: Today is lucky! Money + Love coming! 🐺🔥✨`); });
 bot.command("quran", ctx => ctx.reply("📖 QURAN: In the name of Allah, Most Gracious, Most Merciful.\nhttps://quran.com"));
 bot.command("prayertime", ctx => { const c=q(ctx)||"Kampala"; ctx.reply(`🕌 Prayer ${c}:\nFajr 5:30 | Dhuhr 1:00 | Asr 4:00 | Maghrib 6:45 | Isha 7:45`); });
-
-// CALCULATOR
 bot.command(["calc","calculator","calculate"], ctx => { try{ let raw=ctx.message.text.trim().replace(/^\/\w+(@\w+)?\s*/,""); if(!raw) return ctx.reply("🧮 /calc 30+67"); ctx.reply(`🧮 ${raw} = ${calcEval(raw)}`); }catch{ ctx.reply("❌ Try: /calc 30+67"); }});
 function twoNum(ctx,fn,sym){ const p=ctx.message.text.split(" ").slice(1).map(Number).filter(n=>!isNaN(n)); if(p.length<2) return ctx.reply("❌ Type: /add 5 3"); ctx.reply(`🧮 ${p[0]} ${sym} ${p[1]} = ${fn(p[0],p[1])}`); }
 bot.command(["add","plus"], ctx=>twoNum(ctx,(a,b)=>a+b,"+")); bot.command(["sub","minus"], ctx=>twoNum(ctx,(a,b)=>a-b,"-")); bot.command(["mul","times"], ctx=>twoNum(ctx,(a,b)=>a*b,"×")); bot.command(["div","divide"], ctx=>twoNum(ctx,(a,b)=>a/b,"÷")); bot.command("mod", ctx=>twoNum(ctx,(a,b)=>a%b,"%")); bot.command(["pow","power"], ctx=>twoNum(ctx,(a,b)=>Math.pow(a,b),"^"));
 bot.command("percent", ctx=>{ const p=ctx.message.text.split(" ").slice(1).map(Number).filter(n=>!isNaN(n)); if(p.length<2) return ctx.reply("Usage: /percent 10 200"); ctx.reply(`🧮 ${p[0]}% of ${p[1]} = ${(p[0]/100)*p[1]}`); });
 function oneNum(ctx,fn,label){ const n=Number(ctx.message.text.split(" ")[1]); if(isNaN(n)) return ctx.reply(`❌ Type: /${label} 16`); ctx.reply(`🧮 ${label}(${n}) = ${fn(n)}`); }
 bot.command("sqrt", ctx=>oneNum(ctx,n=>Math.sqrt(n),"√")); bot.command("cbrt", ctx=>oneNum(ctx,n=>Math.cbrt(n),"∛")); bot.command("square", ctx=>oneNum(ctx,n=>n*n,"²")); bot.command("cube", ctx=>oneNum(ctx,n=>n*n*n,"³")); bot.command("factorial", ctx=>oneNum(ctx,n=>factorial(n),"!")); bot.command("sin", ctx=>oneNum(ctx,n=>Math.round(Math.sin(n*Math.PI/180)*100000000)/100000000,"sin")); bot.command("cos", ctx=>oneNum(ctx,n=>Math.round(Math.cos(n*Math.PI/180)*100000000)/100000000,"cos")); bot.command("tan", ctx=>oneNum(ctx,n=>Math.round(Math.tan(n*Math.PI/180)*100000000)/100000000,"tan")); bot.command("log", ctx=>oneNum(ctx,n=>Math.log10(n),"log")); bot.command("ln", ctx=>oneNum(ctx,n=>Math.log(n),"ln"));
-
-// STALK
 bot.command("gitstalk", async (ctx) => { const u=q(ctx); if(!u) return ctx.reply("❌ Type: /gitstalk davidmurungi114-ctrl"); try{ const r=await axios.get(`https://api.github.com/users/${u}`,{timeout:5000}); ctx.reply(`🐙 ${r.data.login}\n👤 ${r.data.name||"N/A"}\n📦 Repos: ${r.data.public_repos}\n👥 Followers: ${r.data.followers}\n🔗 ${r.data.html_url}`); }catch(e){ ctx.reply(`🐙 https://github.com/${u}`); }});
 bot.command("npmstalk", ctx => { const p=q(ctx); if(!p) return ctx.reply("❌ Type: /npmstalk telegraf"); ctx.reply(`📦 NPM: ${p}\nhttps://www.npmjs.com/package/${p}`); });
 bot.command(["tgstalk","ttstalk","xstalk"], ctx => { const u=q(ctx); ctx.reply(`🕵️ ${ctx.message.text.split(" ")[0]}: ${u||"@"}\nhttps://google.com/search?q=${encodeURIComponent(u||"wolf")}`); });
-
-// GAMES
 bot.command("trivia", ctx => { const x=pick([["Capital of Uganda?","Kampala! 🇺🇬"],["2+2?","4! 🧮"],["Who made WOLF MD?","PROFESSOR COOLGUY! 🤟"]]); ctx.reply(`🧠 TRIVIA: ${x[0]}\n\nAnswer: ${x[1]}`); });
 bot.command("riddle", ctx => ctx.reply("🧩 RIDDLE: I speak without mouth, hear without ears. What am I?\n\nAnswer: Echo!"));
 bot.command("truth", ctx => ctx.reply("😳 TRUTH: "+pick(["Do you have a crush? 😏","Biggest secret?","Who do you love most? ❤️","Ever lied to parents? 😅"])));
@@ -111,8 +87,6 @@ bot.command("coin", ctx => ctx.reply("🪙 "+(Math.random()>0.5?"Heads!":"Tails!
 bot.command("random", ctx => ctx.reply(`🎲 RANDOM:\nNumber: ${Math.floor(Math.random()*100)+1}\nWord: ${pick(["WOLF","FIRE","COOLGUY","UGANDA","KAMPALA","CHAMPION"])} 🔥`));
 bot.command("pick", ctx => { const opts=q(ctx).split(",").map(s=>s.trim()).filter(Boolean); if(opts.length<2) return ctx.reply("❌ Type: /pick pizza, rolex, matooke"); ctx.reply(`🎯 WOLF Picks: ${pick(opts)}!`); });
 bot.command("guess", ctx => ctx.reply(`🎯 GUESS: I think ${Math.floor(Math.random()*10)+1} (1-10)! Did you guess? 😏`));
-
-// FUN
 bot.command("joke", ctx => ctx.reply("😂 "+pick(["Why did wolf cross road? To burn you! 🔥🐺","What do you call funny wolf? Howl-arious! 🐺😂","Why WOLF MD smart? PROFESSOR COOLGUY made it! 🤟"])));
 bot.command("quote", async (ctx) => { try{ const r=await axios.get("https://api.quotable.io/random",{timeout:5000}); ctx.reply(`💬 "${r.data.content}"\n\n- ${r.data.author}`); }catch(e){ ctx.reply(`💬 "Don't panic to be burnt!" - WOLF 🐺🔥`); }});
 bot.command("fact", async (ctx) => { try{ const r=await axios.get("https://uselessfacts.jsph.pl/random.json?language=en",{timeout:5000}); ctx.reply(`🧠 FACT: ${r.data.text}`); }catch(e){ ctx.reply("🧠 FACT: Wolves run 60km/h!"); }});
@@ -129,6 +103,4 @@ bot.command("handsome", ctx => ctx.reply(`😍 ${ctx.from.first_name} Handsome: 
 bot.command("pretty", ctx => ctx.reply(`😍 ${ctx.from.first_name} Pretty: ${Math.floor(Math.random()*21)+80}% ✨`));
 bot.command("waifu", async (ctx) => { try{ await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/beautiful%20anime%20girl%20waifu",{caption:"🌸 Your Waifu! ❤️🐺"}); }catch(e){ ctx.reply("🌸 Your Waifu: You are waifu bro! ❤️"); }});
 bot.command("couplepp", async (ctx) => { try{ await ctx.replyWithPhoto("https://picsum.photos/400/400?random=1",{caption:"💑 Couple PP - You + WOLF 🐺❤️"}); }catch(e){ ctx.reply("💑 Couple PP: You + WOLF = Perfect!"); }});
-
-// ANIME
-bot.command("pokemon", async (ctx) => { const
+bot.command("pokemon", async (ctx) => { const name=q(ctx)||"pikachu"; try{ const r=await axios.get(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`,{timeout:5000}); const p=r.data; await ctx.replyWithPhoto(p.sprites.front_default,{caption:`⚡ ${p.name.to
