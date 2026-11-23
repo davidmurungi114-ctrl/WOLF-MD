@@ -1,5 +1,5 @@
 module.exports = {
-  BOT_TOKEN: "9283450194:AAGigbHHpThJK0f8qWCzmNDC-XyWLh434MM",
+  BOT_TOKEN: "9283450194:AAFSUMcMPonVTnwKrtQO_YyQhh5qDyJJOkQ",
   BOT_NAME: "WOLF MD",
   BOT_USERNAME: "wolf_md_coolguy_bot",
   OWNER_NAME: "PROFESSOR COOLGUY",
@@ -8,5 +8,5 @@ module.exports = {
   MODE: "public",
   BOT_IMAGE: "https://files.catbox.moe/zyckgc.jpg",
   FOOTER: "WOLF MD • Don't panic to be burnt",
-  OWNER_IDS: [750765838],
+  OWNER_IDS: [7561616497],
 };
