@@ -1,5 +1,5 @@
 // WOLF MD v13 - PERFECT - FAST - ALL COMMANDS - BY PROFESSOR COOLGUY
-const { Telegraf } = require("telegraf");
+const { Telegraf, Markup } = require("telegraf");
 const axios = require("axios");
 const config = require("./config");
 const { saveMember, getUptime, groupMembers } = require("./utils");
@@ -9,17 +9,27 @@ const IMG = config.BOT_IMAGE || "https://files.catbox.moe/zyckgc.jpg";
 const pick = a => a[Math.floor(Math.random()*a.length)];
 const q = ctx => (ctx.message?.text || ctx.message?.caption || "").split(" ").slice(1).join(" ").trim();
 const cn = ctx => (ctx.message.text||"").split(" ")[0].replace("/","").toLowerCase();
+
+// BUTTONS - WOLF MD
+const wolfButtons = () => Markup.inlineKeyboard([
+  [Markup.button.url("💬 WhatsApp Group", config.WHATSAPP_GROUP)],
+  [Markup.button.url("📢 WhatsApp Channel", config.WHATSAPP_CHANNEL)],
+  [Markup.button.url("✈️ Telegram Group", config.TELEGRAM_GROUP)],
+  [Markup.button.url("📢 Telegram Channel", config.TELEGRAM_CHANNEL)],
+  [Markup.button.url("👑 Chat Owner on Telegram", "https://t.me/COOLGUYTHETOP")]
+]);
+
 bot.on("message",(ctx,next)=>{try{saveMember(ctx);}catch(e){}return next();});
-bot.command("menu",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:"🐺🔥 *WOLF MD MENU* 🔥🐺",parse_mode:"Markdown"});await ctx.reply(getMenuText(),{parse_mode:"Markdown"});}catch(e){await ctx.reply(getMenuText());}});
-bot.start(async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu`,parse_mode:"Markdown"});}catch(e){await ctx.reply("🐺 WOLF MD ALIVE! Type /menu");}});
+bot.command("menu",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:"🐺🔥 *WOLF MD MENU* 🔥🐺",parse_mode:"Markdown",...wolfButtons().reply_markup});await ctx.reply(getMenuText(),{parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply(getMenuText(),wolfButtons());}});
+bot.start(async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu`,parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 WOLF MD ALIVE! Type /menu",wolfButtons());}});
 // OWNER - CORRECTED - USES CONFIG.JS + YOUR LINKS
 bot.command("ping",ctx=>ctx.reply("PONG! ✅ WOLF MD ALIVE 🔥\nBy PROFESSOR COOLGUY"));
-bot.command("alive",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nUptime: ${getUptime()}`,parse_mode:"Markdown"});}catch(e){await ctx.reply("🐺 ALIVE! "+getUptime());}});
+bot.command("alive",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nUptime: ${getUptime()}`,parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 ALIVE! "+getUptime(),wolfButtons());}});
 bot.command("runtime",ctx=>ctx.reply(`⏱️ Uptime: ${getUptime()}`));
-bot.command("owner",ctx=>ctx.reply(`👑 OWNER: ${config.OWNER_NAME}\n🛠️ By: PROFESSOR COOLGUY\n📱 Telegram: ${config.OWNER_USERNAME}\n\n📲 JOIN US:\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}\n\n🐺 Don't panic to be burnt!`));
-bot.command("contact",ctx=>ctx.reply(`👑 Owner: ${config.OWNER_NAME}\n📱 Telegram: ${config.OWNER_USERNAME}\n\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
-bot.command("group",ctx=>ctx.reply(`📲 JOIN WOLF MD GROUPS:\n\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
-bot.command("channel",ctx=>ctx.reply(`📢 CHANNELS:\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
+bot.command("owner",ctx=>ctx.reply(`👑 OWNER: ${config.OWNER_NAME}\n🛠️ By: PROFESSOR COOLGUY\n📱 Telegram: ${config.OWNER_USERNAME}\n\n👇 Tap below to join! 👇\n🐺 Don't panic to be burnt!`,wolfButtons()));
+bot.command("contact",ctx=>ctx.reply(`👑 Owner: ${config.OWNER_NAME}\n📱 Telegram: ${config.OWNER_USERNAME}\n\n👇 Tap below! 👇`,wolfButtons()));
+bot.command("group",ctx=>ctx.reply(`📲 JOIN WOLF MD GROUPS! 👇\n\nTap any button below!`,wolfButtons()));
+bot.command("channel",ctx=>ctx.reply(`📢 CHANNELS! 👇\n\nTap below!`,wolfButtons()));
 bot.command("repo",ctx=>ctx.reply("🐺 REPO:\nhttps://github.com/davidmurungi114-ctrl/WOLF-MD"));
 // GROUP INSTANT
 const S={
@@ -126,7 +136,21 @@ bot.command("waifu",async ctx=>{try{await ctx.replyWithPhoto("https://image.poll
 bot.command("pokemon",async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/pokemon%20pikachu%20cute",{caption:"⚡ Pokemon! 🐺"});}catch(e){ctx.reply("⚡ Pikachu!");}});
 bot.command("animepic",async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20girl%20beautiful",{caption:"🌸 Anime Pic! 🐺"});}catch(e){ctx.reply("🌸 Failed!");}});
 bot.command(["animewall","wallpaper"],async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20wallpaper%204k",{caption:"🖼️ Wallpaper! 🐺"});}catch(e){ctx.reply("🖼️ Failed!");}});
-bot.on("text",async ctx=>{if(ctx.message.text.startsWith("/"))return;await ctx.reply(`🐺 Hi *${ctx.from.first_name}!* Type */menu* 🔥`,{parse_mode:"Markdown"});});
-bot.launch().then(()=>console.log("🐺 WOLF MD ONLINE!"));
+bot.on("text",async ctx=>{if(!ctx.message.text || ctx.message.text.startsWith("/"))return;await ctx.reply(`🐺 Hi *${ctx.from.first_name}!* Type */menu* 🔥`,{parse_mode:"Markdown"});});
+
+// ✅ FIX 429 - STOP CRASH LOOP - CORRECTED LAUNCH
+bot.catch((err) => console.log("Bot error (ignored):", err.message));
+(async () => {
+  try {
+    await bot.telegram.deleteWebhook({ drop_pending_updates: true });
+    console.log("🐺 Old webhook cleared!");
+    await new Promise(r => setTimeout(r, 3000));
+    await bot.launch({ dropPendingUpdates: true });
+    console.log("🐺 WOLF MD ONLINE!");
+  } catch (e) {
+    console.log("Launch failed, retry in 30s:", e.message);
+    setTimeout(() => process.exit(0), 30000);
+  }
+})();
 process.once("SIGINT",()=>bot.stop("SIGINT"));
 process.once("SIGTERM",()=>bot.stop("SIGTERM"));
