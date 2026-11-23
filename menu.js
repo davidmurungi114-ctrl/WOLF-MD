@@ -1,270 +1,115 @@
-// WOLF MD - MENU.JS - CLEAN - WOLF ONLY - TELEGRAM ONLY
-function getMenu(userName, uptime, ping) {
+// WOLF MD - MENU - TELEGRAM ONLY - NO EMMYHENZ
+function getMenuText() {
   const date = new Date().toLocaleString("en-GB", { timeZone: "Africa/Kampala" });
   return `╔════════◇◆◇═══════╗
 ├ *❄️ WOLF -MD ❄️*
 ├▢👑 Owner: *WOLF*
 ├▢🛠️ Created By: *PROFESSOR COOLGUY*
 ├▢🕐 *${date}*
-├▢⏱️ Uptime: *${uptime}*
-├▢📶 Ping: *${ping}ms*
 ├▢🔖 Version: *v18.0.0*
 ├▢📚 Commands: *421*
-├▢🌐 *Free Telegram Bot:*
-FOR TELEGRAM USERS ONLY
 ╚════════◇◆◇═══════╝
 
 ╔═══════════════╗
   👑 *OWNER*
 ╠───────────────╣
-║ ➣ */owner*
-║ ➣ */settings*
-║ ➣ */setprefix*
-║ ➣ */setbotbio*
-║ ➣ */addsudo*
-║ ➣ */delsudo*
-║ ➣ */sudolist*
-║ ➣ */block*
-║ ➣ */unblock*
-║ ➣ */ban*
-║ ➣ */unban*
-║ ➣ */broadcast*
+║ ➣ */owner* */settings* */broadcast*
+║ ➣ */addsudo* */delsudo* */sudolist*
 ╚═══════════════╝
 
 ╔═══════════════╗
   💻 *BOT*
 ╠───────────────╣
-║ ➣ */owner*
-║ ➣ */ping*
-║ ➣ */alive*
-║ ➣ */menu*
-║ ➣ */runtime*
-║ ➣ */repo*
+║ ➣ */ping* */alive* */menu* */runtime*
+║ ➣ */repo* */owner* */mode*
 ╚═══════════════╝
 
 ╔═══════════════╗
   👥 *GROUP*
 ╠───────────────╣
-║ ➣ */add*
-║ ➣ */kick*
-║ ➣ */promote*
-║ ➣ */demote*
-║ ➣ */mute*
-║ ➣ */unmute*
-║ ➣ */pin*
-║ ➣ */unpin*
-║ ➣ */tagall*
-║ ➣ */tag*
-║ ➣ */hidetag*
-║ ➣ */tagadmins*
-║ ➣ */poll*
-║ ➣ */antilink*
-║ ➣ */antibot*
-║ ➣ */warn*
-║ ➣ */warnings*
-║ ➣ */groupinfo*
-║ ➣ */grouplink*
-║ ➣ */setname*
-║ ➣ */setdesc*
-║ ➣ */rules*
-║ ➣ */welcome*
-║ ➣ */goodbye*
-║ ➣ */afk*
+║ ➣ */tagall* */tag* */hidetag* */tagadmins*
+║ ➣ */kick* */ban* */mute* */unmute*
+║ ➣ */promote* */demote* */pin* */unpin*
+║ ➣ */poll* */rules* */welcome* */goodbye*
+║ ➣ */groupinfo* */grouplink* */afk*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🤖 *AI*
 ╠───────────────╣
-║ ➣ */ai*
-║ ➣ */gpt*
-║ ➣ */qwen*
-║ ➣ */imagine*
-║ ➣ */flux*
-║ ➣ */dalle*
-║ ➣ */toanime*
-║ ➣ */ghibli*
-║ ➣ */tochibi*
-║ ➣ */tocartoon*
-║ ➣ */topixar*
-║ ➣ */todisney*
-║ ➣ */tomanga*
-║ ➣ */tofigure*
-║ ➣ */toroblox*
-║ ➣ */topolaroid*
-║ ➣ */tobald*
-║ ➣ */editai*
+║ ➣ */gpt* */ai* */qwen* */imagine*
+║ ➣ */flux* */dalle* */toanime* */ghibli*
 ╚═══════════════╝
 
 ╔═══════════════╗
   📥 *DOWNLOADER*
 ╠───────────────╣
-║ ➣ */play*
-║ ➣ */song*
-║ ➣ */music*
-║ ➣ */ytmp3*
-║ ➣ */ytmp4*
-║ ➣ */video*
-║ ➣ */instagram*
-║ ➣ */tiktok*
-║ ➣ */facebook*
-║ ➣ */pinterest*
-║ ➣ */anime*
-║ ➣ */movie*
-║ ➣ */apk*
-║ ➣ */gitclone*
-║ ➣ */mediafire*
-║ ➣ */spotify*
-║ ➣ */gdrive*
-║ ➣ */threads*
-║ ➣ */capcut*
+║ ➣ */song* */play* */music* */ytmp3*
+║ ➣ */ytmp4* */video* */instagram* */tiktok*
+║ ➣ */facebook* */movie* */apk* */spotify*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🎚️ *AUDIO*
 ╠───────────────╣
-║ ➣ */bass*
-║ ➣ */deep*
-║ ➣ */blown*
-║ ➣ */earrape*
-║ ➣ */fast*
-║ ➣ */slow*
-║ ➣ */nightcore*
-║ ➣ */robot*
-║ ➣ */8d*
-║ ➣ */echo*
-║ ➣ */reverb*
-║ ➣ */tomp3*
-║ ➣ */tts*
-║ ➣ */volume*
-║ ➣ */tempo*
+║ ➣ */tts* */bass* */deep* */nightcore*
+║ ➣ */robot* */echo* */reverb* */tomp3*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🎨 *CONVERTER*
 ╠───────────────╣
-║ ➣ */sticker*
-║ ➣ */toimg*
-║ ➣ */removebg*
-║ ➣ */upscale*
-║ ➣ */attp*
-║ ➣ */qc*
-║ ➣ */emojimix*
-║ ➣ */blur*
-║ ➣ */meme*
-║ ➣ */getpp*
-║ ➣ */wasted*
-║ ➣ */circle*
-║ ➣ */ttp*
-║ ➣ */brat*
-║ ➣ */tomp4*
-║ ➣ */tovn*
+║ ➣ */sticker* */toimg* */removebg* */upscale*
+║ ➣ */attp* */qc* */emojimix* */blur* */meme*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🔤 *LOGO MAKER*
 ╠───────────────╣
-║ ➣ */fancy*
-║ ➣ */gfx*
-║ ➣ */gfx2*
-║ ➣ */gfx3*
-║ ➣ */metallic*
-║ ➣ */ice*
-║ ➣ */neon*
-║ ➣ */thunder*
-║ ➣ */hacker*
-║ ➣ */fire*
-║ ➣ */glow*
-║ ➣ */glitch*
-║ ➣ */marvel*
-║ ➣ */avenger*
+║ ➣ */fancy* */gfx* */neon* */fire* */glitch*
+║ ➣ */thunder* */hacker* */marvel* */avenger*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🛠️ *TOOLS*
 ╠───────────────╣
-║ ➣ */ss*
-║ ➣ */translate*
-║ ➣ */qrcode*
-║ ➣ */qr*
-║ ➣ */shorturl*
-║ ➣ */calculator*
-║ ➣ */calc*
-║ ➣ */weather*
-║ ➣ */news*
-║ ➣ */livescore*
-║ ➣ */lyrics*
-║ ➣ */currency*
-║ ➣ */crypto*
-║ ➣ */google*
-║ ➣ */image*
-║ ➣ */wiki*
-║ ➣ */imdb*
-║ ➣ */horo*
-║ ➣ */ocr*
-║ ➣ */quran*
-║ ➣ */prayertime*
+║ ➣ */qr* */qrcode* */ss* */translate*
+║ ➣ */weather* */news* */lyrics* */calc*
+║ ➣ */currency* */crypto* */wiki* */google*
+║ ➣ */image* */quran* */prayertime*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🎮 *GAMES*
 ╠───────────────╣
-║ ➣ */trivia*
-║ ➣ */wordle*
-║ ➣ */hangman*
-║ ➣ */ttt*
-║ ➣ */tictactoe*
-║ ➣ */rps*
-║ ➣ */slots*
-║ ➣ */truth*
-║ ➣ */dare*
-║ ➣ */riddle*
-║ ➣ */8ball*
-║ ➣ */dice*
-║ ➣ */coin*
-║ ➣ */guessflag*
-║ ➣ */guessanime*
+║ ➣ */trivia* */wordle* */hangman* */ttt*
+║ ➣ */rps* */slots* */truth* */dare* */dice*
+║ ➣ */8ball* */coin* */guessflag*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🎯 *FUN*
 ╠───────────────╣
-║ ➣ */joke*
-║ ➣ */fact*
-║ ➣ */quote*
-║ ➣ */compliment*
-║ ➣ */roast*
-║ ➣ */flirt*
-║ ➣ */ship*
-║ ➣ */shayari*
-║ ➣ */handsome*
-║ ➣ */pretty*
-║ ➣ */waifu*
-║ ➣ */weeb*
+║ ➣ */joke* */fact* */quote* */roast* */flirt*
+║ ➣ */ship* */handsome* */pretty* */waifu*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🌸 *ANIME*
 ╠───────────────╣
-║ ➣ */pokemon*
-║ ➣ */animepic*
-║ ➣ */animewall*
-║ ➣ */wallpaper*
-║ ➣ */animenews*
+║ ➣ */pokemon* */animepic* */animewall*
+║ ➣ */wallpaper* */animenews*
 ╚═══════════════╝
 
 ╔═══════════════╗
   🕵️ *STALK*
 ╠───────────────╣
-║ ➣ */gitstalk*
-║ ➣ */tgstalk*
-║ ➣ */ttstalk*
-║ ➣ */xstalk*
+║ ➣ */gitstalk* */tgstalk* */ttstalk* */xstalk*
 ╚═══════════════╝
 
 ╔══════════════════╗
         *ABOUT US*
 ╠──────────────────╣
- *TELEGRAM BOT ONLY ❤️‍🔥*
   Owner: *WOLF*
   Creator: *PROFESSOR COOLGUY*
   📺 t.me/wolf_md_coolguy_bot
@@ -272,5 +117,4 @@ FOR TELEGRAM USERS ONLY
  Thanks For Using WOLF MD🙏
 ╚══════════════════╝`;
 }
-
-module.exports = { getMenu };
+module.exports = { getMenuText };
