@@ -138,19 +138,22 @@ bot.command("animepic",async ctx=>{try{await ctx.replyWithPhoto("https://image.p
 bot.command(["animewall","wallpaper"],async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20wallpaper%204k",{caption:"🖼️ Wallpaper! 🐺"});}catch(e){ctx.reply("🖼️ Failed!");}});
 bot.on("text",async ctx=>{if(!ctx.message.text || ctx.message.text.startsWith("/"))return;await ctx.reply(`🐺 Hi *${ctx.from.first_name}!* Type */menu* 🔥`,{parse_mode:"Markdown"});});
 
-// ✅ FIX 429 - STOP CRASH LOOP - CORRECTED LAUNCH
+// ✅ FIX 429 FINAL - WAIT, DON'T SPAM, DON'T EXIT - THIS IS THE CORRECTED BOTTOM!
 bot.catch((err) => console.log("Bot error (ignored):", err.message));
-(async () => {
-  try {
-    await bot.telegram.deleteWebhook({ drop_pending_updates: true });
-    console.log("🐺 Old webhook cleared!");
-    await new Promise(r => setTimeout(r, 3000));
-    await bot.launch({ dropPendingUpdates: true });
-    console.log("🐺 WOLF MD ONLINE!");
-  } catch (e) {
-    console.log("Launch failed, retry in 30s:", e.message);
-    setTimeout(() => process.exit(0), 30000);
+async function startWolf() {
+  console.log("🐺 Waiting 60s for Telegram to cool down...");
+  await new Promise(r => setTimeout(r, 60000));
+  while (true) {
+    try {
+      await bot.launch({ dropPendingUpdates: true });
+      console.log("🐺 WOLF MD ONLINE!");
+      break;
+    } catch (e) {
+      console.log("Still blocked, waiting 60s more:", e.message);
+      await new Promise(r => setTimeout(r, 60000));
+    }
   }
-})();
+}
+startWolf();
 process.once("SIGINT",()=>bot.stop("SIGINT"));
 process.once("SIGTERM",()=>bot.stop("SIGTERM"));
