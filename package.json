@@ -1,6 +1,6 @@
 {
   "name": "wolf-md",
-  "version": "15.0.0",
+  "version": "18.0.0",
   "description": "WOLF MD Telegram Bot by PROFESSOR COOLGUY",
   "main": "bot.js",
   "scripts": { "start": "node bot.js" },
