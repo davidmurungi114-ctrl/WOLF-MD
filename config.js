@@ -1,6 +1,6 @@
 // WOLF MD - CONFIG - CORRECTED - BY PROFESSOR COOLGUY
 module.exports = {
-  BOT_TOKEN: process.env.BOT_TOKEN || "",
+  BOT_TOKEN: process.env.BOT_TOKEN || "9283450194:AAGJ8loY0MmgIO68ugLugdLa5JNYpVWVQac",
   BOT_NAME: "WOLF MD",
   BOT_USERNAME: "wolf_md_coolguy_bot",
   OWNER_NAME: "MURUNGI DAVID",
