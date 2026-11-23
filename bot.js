@@ -1,14 +1,25 @@
-// WOLF MD v13 - PERFECT - FAST - ALL COMMANDS - BY PROFESSOR COOLGUY
+// WOLF MD v13 - FIXED - FAST - ALL COMMANDS - BY PROFESSOR COOLGUY
 const { Telegraf, Markup } = require("telegraf");
 const axios = require("axios");
 const config = require("./config");
-const { saveMember, getUptime, groupMembers } = require("./utils");
 const { getMenuText } = require("./menu");
+
+// ✅ SAFE UTILS - Bot will NOT crash if utils.js is broken!
+let saveMember = () => {};
+let getUptime = () => { const up = process.uptime(); const h = Math.floor(up/3600), m = Math.floor((up%3600)/60), s = Math.floor(up%60); return `${h}h ${m}m ${s}s`; };
+let groupMembers = {};
+try {
+  const u = require("./utils");
+  if (u.saveMember) saveMember = u.saveMember;
+  if (u.getUptime) getUptime = u.getUptime;
+  if (u.groupMembers) groupMembers = u.groupMembers;
+} catch (e) { console.log("utils.js missing, using fallback"); }
+
 const bot = new Telegraf(config.BOT_TOKEN);
 const IMG = config.BOT_IMAGE || "https://files.catbox.moe/zyckgc.jpg";
 const pick = a => a[Math.floor(Math.random()*a.length)];
 const q = ctx => (ctx.message?.text || ctx.message?.caption || "").split(" ").slice(1).join(" ").trim();
-const cn = ctx => (ctx.message.text||"").split(" ")[0].replace("/","").toLowerCase();
+const cn = ctx => (ctx.message?.text || "").split(" ")[0].replace("/","").toLowerCase();
 
 // BUTTONS - WOLF MD
 const wolfButtons = () => Markup.inlineKeyboard([
@@ -20,11 +31,11 @@ const wolfButtons = () => Markup.inlineKeyboard([
 ]);
 
 bot.on("message",(ctx,next)=>{try{saveMember(ctx);}catch(e){}return next();});
-bot.command("menu",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:"🐺🔥 *WOLF MD MENU* 🔥🐺",parse_mode:"Markdown",...wolfButtons().reply_markup});await ctx.reply(getMenuText(),{parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply(getMenuText(),wolfButtons());}});
-bot.start(async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu`,parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 WOLF MD ALIVE! Type /menu",wolfButtons());}});
-// OWNER - CORRECTED - USES CONFIG.JS + YOUR LINKS
+bot.command("menu",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:"🐺🔥 *WOLF MD MENU* 🔥🐺",parse_mode:"Markdown",reply_markup:wolfButtons().reply_markup});await ctx.reply(getMenuText(),{parse_mode:"Markdown",reply_markup:wolfButtons().reply_markup});}catch(e){await ctx.reply(getMenuText(),wolfButtons());}});
+bot.start(async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu`,parse_mode:"Markdown",reply_markup:wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 WOLF MD ALIVE! Type /menu",wolfButtons());}});
+// OWNER
 bot.command("ping",ctx=>ctx.reply("PONG! ✅ WOLF MD ALIVE 🔥\nBy PROFESSOR COOLGUY"));
-bot.command("alive",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nUptime: ${getUptime()}`,parse_mode:"Markdown",...wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 ALIVE! "+getUptime(),wolfButtons());}});
+bot.command("alive",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nUptime: ${getUptime()}`,parse_mode:"Markdown",reply_markup:wolfButtons().reply_markup});}catch(e){await ctx.reply("🐺 ALIVE! "+getUptime(),wolfButtons());}});
 bot.command("runtime",ctx=>ctx.reply(`⏱️ Uptime: ${getUptime()}`));
 bot.command("owner",ctx=>ctx.reply(`👑 OWNER: ${config.OWNER_NAME}\n🛠️ By: PROFESSOR COOLGUY\n📱 Telegram: ${config.OWNER_USERNAME}\n\n👇 Tap below to join! 👇\n🐺 Don't panic to be burnt!`,wolfButtons()));
 bot.command("contact",ctx=>ctx.reply(`👑 Owner: ${config.OWNER_NAME}\n📱 Telegram: ${config.OWNER_USERNAME}\n\n👇 Tap below! 👇`,wolfButtons()));
@@ -83,7 +94,7 @@ bot.command("imdb",ctx=>{const s=q(ctx);if(!s)return ctx.reply("❌ /imdb Avatar
 bot.command("horo",ctx=>ctx.reply(`🔮 Horoscope ${q(ctx)||"leo"}: Today is your lucky day! 🔥`));
 bot.command("quran",ctx=>ctx.reply("📖 Quran: https://quran.com"));
 bot.command("prayertime",ctx=>ctx.reply("🕌 Kampala:\nFajr 5:30 | Dhuhr 1:00 | Asr 4:15 | Maghrib 6:45 | Isha 7:55"));
-// CALCULATOR - ALL WORKING INSTANT
+// CALCULATOR
 bot.command(["calculator","calc"],ctx=>{const t=q(ctx);if(!t)return ctx.reply("❌ /calc 2+2*3");try{let e=t.replace(/[^0-9+\-*/().% ]/g,"");if(!e)throw new Error("bad");ctx.reply(`🧮 ${t} = ${Function("return "+e)()}`);}catch(err){ctx.reply("❌ Try: /calc 2+2");}});
 bot.command("add",ctx=>{const a=q(ctx).split(" ").map(Number);ctx.reply(`🧮 ${a[0]} + ${a[1]} = ${a[0]+a[1]}`);});
 bot.command("sub",ctx=>{const a=q(ctx).split(" ").map(Number);ctx.reply(`🧮 ${a[0]} - ${a[1]} = ${a[0]-a[1]}`);});
@@ -138,20 +149,20 @@ bot.command("animepic",async ctx=>{try{await ctx.replyWithPhoto("https://image.p
 bot.command(["animewall","wallpaper"],async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20wallpaper%204k",{caption:"🖼️ Wallpaper! 🐺"});}catch(e){ctx.reply("🖼️ Failed!");}});
 bot.on("text",async ctx=>{if(!ctx.message.text || ctx.message.text.startsWith("/"))return;await ctx.reply(`🐺 Hi *${ctx.from.first_name}!* Type */menu* 🔥`,{parse_mode:"Markdown"});});
 
-// ✅ FIX 429 FINAL - WAIT, DON'T SPAM, DON'T EXIT - THIS IS THE CORRECTED BOTTOM!
-bot.catch((err) => console.log("Bot error (ignored):", err.message));
+// ✅ FIXED BOTTOM - LAUNCH NOW, NO 60s WAIT, NO DROP!
+bot.catch((err) => console.log("Bot error:", err.message));
 async function startWolf() {
-  console.log("🐺 Waiting 60s for Telegram to cool down...");
-  await new Promise(r => setTimeout(r, 60000));
-  while (true) {
-    try {
-      await bot.launch({ dropPendingUpdates: true });
-      console.log("🐺 WOLF MD ONLINE!");
-      break;
-    } catch (e) {
-      console.log("Still blocked, waiting 60s more:", e.message);
-      await new Promise(r => setTimeout(r, 60000));
+  try {
+    await bot.launch({ dropPendingUpdates: false });
+    console.log("🐺 WOLF MD ONLINE!");
+  } catch (e) {
+    console.log("LAUNCH FAILED:", e.message);
+    if (e.message.includes("401") || e.message.includes("Unauthorized")) {
+      console.log("❌ TOKEN IS WRONG! FIX BOT_TOKEN IN RAILWAY!");
+      return;
     }
+    console.log("Retrying in 10s...");
+    setTimeout(startWolf, 10000);
   }
 }
 startWolf();
