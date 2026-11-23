@@ -70,6 +70,12 @@
 
 [![📢 Telegram Channel](https://img.shields.io/badge/📢_Telegram_Channel-FOLLOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/coolguy_md_v10)
 
+<br>
+
+[![👑 Chat Owner on WhatsApp](https://img.shields.io/badge/👑_Chat_Owner_on_WhatsApp-CHAT_NOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/YOUR_NUMBER?text=Hi%20WOLF%20MD%20Owner!%20🔥🐺)
+
+[![👑 Chat Owner on Telegram](https://img.shields.io/badge/👑_Chat_Owner_on_Telegram-CHAT_NOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/COOLGUYTHETOP)
+
 <br><br>
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=24&pause=1000&color=00FF00&center=true&vCenter=true&width=500&lines=Don't+panic+to+be+burnt!;WOLF+MD+FOREVER+%F0%9F%94%A5%F0%9F%90%BA)
