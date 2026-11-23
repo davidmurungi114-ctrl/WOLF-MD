@@ -1,18 +1,18 @@
+// utils.js
+const config = require("./config");
 const startTime = Date.now();
 const groupMembers = {};
-
 function getUptime() {
   const s = Math.floor((Date.now() - startTime) / 1000);
   const d = Math.floor(s / 86400);
   const h = Math.floor((s % 86400) / 3600);
   const m = Math.floor((s % 3600) / 60);
   const sec = s % 60;
-  if (d > 0) return `${d}d ${h}h ${m}m ${sec}s`;
-  if (h > 0) return `${h}h ${m}m ${sec}s`;
+  if (d > 0) return `${d}d ${h}h ${m}m`;
+  if (h > 0) return `${h}h ${m}m`;
   if (m > 0) return `${m}m ${sec}s`;
   return `${sec}s`;
 }
-
 function saveMember(ctx) {
   try {
     if (!ctx.chat || !ctx.from) return;
@@ -22,13 +22,4 @@ function saveMember(ctx) {
     }
   } catch (e) {}
 }
-
-async function sendDP(ctx, text) {
-  try {
-    await ctx.replyWithPhoto("https://files.catbox.moe/zyckgc.jpg", { caption: text });
-  } catch (e) {
-    await ctx.reply(text);
-  }
-}
-
-module.exports = { getUptime, saveMember, sendDP, groupMembers };
+module.exports = { getUptime, saveMember, groupMembers };
