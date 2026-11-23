@@ -1,10 +1,14 @@
 {
   "name": "wolf-md",
-  "version": "13.0.0",
+  "version": "15.0.0",
+  "description": "WOLF MD Telegram Bot by PROFESSOR COOLGUY",
   "main": "bot.js",
   "scripts": { "start": "node bot.js" },
   "dependencies": {
     "telegraf": "^4.16.3",
     "axios": "^1.7.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
