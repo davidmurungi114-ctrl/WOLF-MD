@@ -60,6 +60,16 @@
 
 [![🔍 FIND AND USE WOLF MD 🐺🔥](https://img.shields.io/badge/🔍_FIND_AND_USE_WOLF_MD-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot)
 
+<br>
+
+[![💬 WhatsApp Group](https://img.shields.io/badge/💬_WhatsApp_Group-JOIN-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/FFgSnVPhy6A8WehgSqkZzp?s=cl&p=a&iam=2)
+
+[![📢 WhatsApp Channel](https://img.shields.io/badge/📢_WhatsApp_Channel-FOLLOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vb8s0RnGk1FzZf371Y30)
+
+[![✈️ Telegram Group](https://img.shields.io/badge/✈️_Telegram_Group-JOIN-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+mTiC-3yK1c83MDNk)
+
+[![📢 Telegram Channel](https://img.shields.io/badge/📢_Telegram_Channel-FOLLOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/coolguy_md_v10)
+
 <br><br>
 
 ![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&weight=700&size=24&pause=1000&color=00FF00&center=true&vCenter=true&width=500&lines=Don't+panic+to+be+burnt!;WOLF+MD+FOREVER+%F0%9F%94%A5%F0%9F%90%BA)
