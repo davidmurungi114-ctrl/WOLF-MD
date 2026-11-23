@@ -1,3 +1,4 @@
+// 🐺 WOLF MD V18 - SMART CALCULATOR by PROFESSOR COOLGUY
 function factorial(n) {
   n = Math.floor(Number(n));
   if (isNaN(n)) throw Error("bad");
@@ -22,6 +23,7 @@ function calcEval(input) {
        .replace(/multiply/g, "*")
        .replace(/divide/g, "/")
        .replace(/mod/g, "%")
+       .replace(/percent of/g, "%*")
        .replace(/percent/g, "%")
        .replace(/power/g, "^")
        .replace(/squared/g, "^2")
@@ -38,8 +40,7 @@ function calcEval(input) {
   t = t.replace(/\s+/g, "");
   t = t.replace(/(\d+)x(\d+)/g, "$1*$2");
 
-  // ✅ FIXED: sin/cos/tan now use DEGREES like calculator!
-  // sin(30) = 0.5, cos(60) = 0.5, tan(45) = 1
+  // ✅ sin/cos/tan in DEGREES - sin(30) = 0.5
   t = t.replace(/sin\(/g, "Math.sin((Math.PI/180)*(")
        .replace(/cos\(/g, "Math.cos((Math.PI/180)*(")
        .replace(/tan\(/g, "Math.tan((Math.PI/180)*(")
