@@ -1,4 +1,4 @@
-// WOLF MD v13 - FAST - ALL COMMANDS - NO WAITING
+// WOLF MD v13 - PERFECT - FAST - ALL COMMANDS - BY PROFESSOR COOLGUY
 const { Telegraf } = require("telegraf");
 const axios = require("axios");
 const config = require("./config");
@@ -12,12 +12,14 @@ const cn = ctx => (ctx.message.text||"").split(" ")[0].replace("/","").toLowerCa
 bot.on("message",(ctx,next)=>{try{saveMember(ctx);}catch(e){}return next();});
 bot.command("menu",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:"🐺🔥 *WOLF MD MENU* 🔥🐺",parse_mode:"Markdown"});await ctx.reply(getMenuText(),{parse_mode:"Markdown"});}catch(e){await ctx.reply(getMenuText());}});
 bot.start(async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nWelcome ${ctx.from.first_name}!\n\nType /menu`,parse_mode:"Markdown"});}catch(e){await ctx.reply("🐺 WOLF MD ALIVE! Type /menu");}});
-// OWNER - INSTANT
+// OWNER - CORRECTED - USES CONFIG.JS + YOUR LINKS
 bot.command("ping",ctx=>ctx.reply("PONG! ✅ WOLF MD ALIVE 🔥\nBy PROFESSOR COOLGUY"));
 bot.command("alive",async ctx=>{try{await ctx.replyWithPhoto(IMG,{caption:`🐺 *WOLF MD ALIVE!* 🔥\nUptime: ${getUptime()}`,parse_mode:"Markdown"});}catch(e){await ctx.reply("🐺 ALIVE! "+getUptime());}});
 bot.command("runtime",ctx=>ctx.reply(`⏱️ Uptime: ${getUptime()}`));
-bot.command("owner",ctx=>ctx.reply("👑 OWNER: WOLF\n🛠️ By: PROFESSOR COOLGUY"));
-bot.command("contact",ctx=>ctx.reply("👑 Owner: WOLF\n🛠️ By: PROFESSOR COOLGUY"));
+bot.command("owner",ctx=>ctx.reply(`👑 OWNER: ${config.OWNER_NAME}\n🛠️ By: PROFESSOR COOLGUY\n📱 Telegram: ${config.OWNER_USERNAME}\n\n📲 JOIN US:\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}\n\n🐺 Don't panic to be burnt!`));
+bot.command("contact",ctx=>ctx.reply(`👑 Owner: ${config.OWNER_NAME}\n📱 Telegram: ${config.OWNER_USERNAME}\n\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
+bot.command("group",ctx=>ctx.reply(`📲 JOIN WOLF MD GROUPS:\n\n💬 WhatsApp Group:\n${config.WHATSAPP_GROUP}\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n✈️ Telegram Group:\n${config.TELEGRAM_GROUP}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
+bot.command("channel",ctx=>ctx.reply(`📢 CHANNELS:\n\n📢 WhatsApp Channel:\n${config.WHATSAPP_CHANNEL}\n\n📢 Telegram Channel:\n${config.TELEGRAM_CHANNEL}`));
 bot.command("repo",ctx=>ctx.reply("🐺 REPO:\nhttps://github.com/davidmurungi114-ctrl/WOLF-MD"));
 // GROUP INSTANT
 const S={
@@ -26,7 +28,7 @@ welcome:c=>`Welcome ${c.from.first_name}! 🎉`,goodbye:c=>`Bye ${c.from.first_n
 for(let k in S) bot.command(k,ctx=>ctx.reply(S[k](ctx)));
 bot.command("tagadmins",async ctx=>{try{const a=await ctx.telegram.getChatAdministrators(ctx.chat.id);let m="👑 ADMINS:\n";a.forEach(x=>{if(!x.user.is_bot)m+=`@${x.user.username||x.user.first_name} `;});ctx.reply(m);}catch(e){ctx.reply("❌ Make me ADMIN first!");}});
 bot.command("tagall",async ctx=>{try{const a=await ctx.telegram.getChatAdministrators(ctx.chat.id);let all={};for(const x of a){if(!x.user.is_bot)all[x.user.id]=x.user.first_name;}const m=groupMembers[ctx.chat.id]||{};for(const id in m)all[id]=m[id];if(!Object.keys(all).length)return ctx.reply("Let everyone send a message first!");let msg=`📢 TAGALL 🐺🔥\n\n${q(ctx)?q(ctx)+"\n\n":""}`;for(const id in all)msg+=`<a href="tg://user?id=${id}">${String(all[id]).replace(/[<>&]/g,"")}</a> `;ctx.reply(msg,{parse_mode:"HTML"});}catch(e){ctx.reply("❌ Make me ADMIN first!");}});
-// AI - FAST: reply instantly, then fetch
+// AI - FAST
 bot.command(["ai","gpt","qwen"],async ctx=>{const t=q(ctx);if(!t)return ctx.reply("❌ Type: /gpt Who is Diamond?");ctx.reply("🤖 Thinking...");try{const r=await axios.get("https://text.pollinations.ai/"+encodeURIComponent(t),{timeout:4000});ctx.reply("🤖 WOLF AI:\n\n"+String(r.data).slice(0,3000));}catch(e){ctx.reply(`🤖 WOLF AI: "${t}" — I am WOLF MD by PROFESSOR COOLGUY! 🔥🐺`);}});
 bot.command(["imagine","flux","dalle"],async ctx=>{const t=q(ctx);if(!t)return ctx.reply("❌ Type: /imagine a wolf in fire");try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/"+encodeURIComponent(t),{caption:`🎨 ${t}`});}catch(e){ctx.reply("Image failed, try again!");}});
 bot.command(["toanime","ghibli","tocartoon","topixar"],async ctx=>{try{await ctx.replyWithPhoto("https://image.pollinations.ai/prompt/anime%20wolf%20boy%20cool",{caption:"🎨 Anime! 🐺"});}catch(e){ctx.reply("Try /imagine anime wolf");}});
@@ -71,7 +73,7 @@ bot.command("imdb",ctx=>{const s=q(ctx);if(!s)return ctx.reply("❌ /imdb Avatar
 bot.command("horo",ctx=>ctx.reply(`🔮 Horoscope ${q(ctx)||"leo"}: Today is your lucky day! 🔥`));
 bot.command("quran",ctx=>ctx.reply("📖 Quran: https://quran.com"));
 bot.command("prayertime",ctx=>ctx.reply("🕌 Kampala:\nFajr 5:30 | Dhuhr 1:00 | Asr 4:15 | Maghrib 6:45 | Isha 7:55"));
-// CALCULATOR - ALL WORKING INSTANT - FIXED!
+// CALCULATOR - ALL WORKING INSTANT
 bot.command(["calculator","calc"],ctx=>{const t=q(ctx);if(!t)return ctx.reply("❌ /calc 2+2*3");try{let e=t.replace(/[^0-9+\-*/().% ]/g,"");if(!e)throw new Error("bad");ctx.reply(`🧮 ${t} = ${Function("return "+e)()}`);}catch(err){ctx.reply("❌ Try: /calc 2+2");}});
 bot.command("add",ctx=>{const a=q(ctx).split(" ").map(Number);ctx.reply(`🧮 ${a[0]} + ${a[1]} = ${a[0]+a[1]}`);});
 bot.command("sub",ctx=>{const a=q(ctx).split(" ").map(Number);ctx.reply(`🧮 ${a[0]} - ${a[1]} = ${a[0]-a[1]}`);});
