@@ -9,9 +9,9 @@
 
 <br><br>
 
-[![🔍 FIND AND USE WOLF MD 🐺](https://img.shields.io/badge/🔍_FIND_AND_USE_WOLF_MD-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot)
+[[🔍 FIND AND USE WOLF MD 🐺](https://img.shields.io/badge/🔍_FIND_AND_USE_WOLF_MD-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot)
 
-[![▶️ START BOT NOW](https://img.shields.io/badge/▶️_START_BOT_NOW-00FF00?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot?start=hello)
+[[▶️ START BOT NOW](https://img.shields.io/badge/▶️_START_BOT_NOW-00FF00?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot?start=hello)
 
 <br>
 
@@ -58,23 +58,23 @@
 <div align="center">
 <br>
 
-[![🔍 FIND AND USE WOLF MD 🐺🔥](https://img.shields.io/badge/🔍_FIND_AND_USE_WOLF_MD-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot)
+[[🔍 FIND AND USE WOLF MD 🐺🔥](https://img.shields.io/badge/🔍_FIND_AND_USE_WOLF_MD-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/wolf_md_coolguy_bot)
 
 <br>
 
-[![💬 WhatsApp Group](https://img.shields.io/badge/💬_WhatsApp_Group-JOIN-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/FFgSnVPhy6A8WehgSqkZzp?s=cl&p=a&iam=2)
+[[💬 WhatsApp Group](https://img.shields.io/badge/💬_WhatsApp_Group-JOIN-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://chat.whatsapp.com/FFgSnVPhy6A8WehgSqkZzp?s=cl&p=a&iam=2)
 
-[![📢 WhatsApp Channel](https://img.shields.io/badge/📢_WhatsApp_Channel-FOLLOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vb8s0RnGk1FzZf371Y30)
+[[📢 WhatsApp Channel](https://img.shields.io/badge/📢_WhatsApp_Channel-FOLLOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://whatsapp.com/channel/0029Vb8s0RnGk1FzZf371Y30)
 
-[![✈️ Telegram Group](https://img.shields.io/badge/✈️_Telegram_Group-JOIN-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+mTiC-3yK1c83MDNk)
+[[✈️ Telegram Group](https://img.shields.io/badge/✈️_Telegram_Group-JOIN-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/+mTiC-3yK1c83MDNk)
 
-[![📢 Telegram Channel](https://img.shields.io/badge/📢_Telegram_Channel-FOLLOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/coolguy_md_v10)
+[[📢 Telegram Channel](https://img.shields.io/badge/📢_Telegram_Channel-FOLLOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/coolguy_md_v10)
 
 <br>
 
-[![👑 Chat Owner on WhatsApp](https://img.shields.io/badge/👑_Chat_Owner_on_WhatsApp-CHAT_NOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/YOUR_NUMBER?text=Hi%20WOLF%20MD%20Owner!%20🔥🐺)
+[[👑 Chat Owner on WhatsApp](https://img.shields.io/badge/👑_Chat_Owner_on_WhatsApp-CHAT_NOW-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/256750765838?text=Hi%20WOLF%20MD%20Owner!%20🔥🐺)
 
-[![👑 Chat Owner on Telegram](https://img.shields.io/badge/👑_Chat_Owner_on_Telegram-CHAT_NOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/COOLGUYTHETOP)
+[[👑 Chat Owner on Telegram](https://img.shields.io/badge/👑_Chat_Owner_on_Telegram-CHAT_NOW-229ED9?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/COOLGUYTHETOP)
 
 <br><br>
 
