@@ -9,9 +9,8 @@ const need = (ctx, txt) => { if(!txt) { ctx.reply('❌ Give text! Example: /ai h
 const MENU1 = `🔥 <b>WOLF MD</b> 🔥
 👑 Owner: <b>WOLF</b>
 ✍️ Created By: <b>PROFESSOR COOLGUY</b>
-📦 Version: <b>v18.0.0</b>
+📦 Version: <b>v19.0.0</b>
 ⚙️ Commands: <b>150+</b>
-🔥 <b>Free Bot By WOLF</b>
 
 👑 <b>OWNER</b>
 ╭──────────────╮
@@ -40,8 +39,6 @@ const MENU1 = `🔥 <b>WOLF MD</b> 🔥
 
 🤖 <b>AI - CHAT LIKE A FRIEND!</b>
 ╭──────────────╮
-➤ Private: Just type anything!
-➤ Group: Reply to bot or say wolf
 ➤ /ai &lt;question&gt;
 ➤ /gpt &lt;question&gt;
 ➤ /imagine &lt;text&gt;
@@ -49,81 +46,159 @@ const MENU1 = `🔥 <b>WOLF MD</b> 🔥
 
 📥 <b>DOWNLOADER</b>
 ╭──────────────╮
-➤ /play &lt;name&gt; - MP3 in Telegram
-➤ /song &lt;name&gt; - MP3 in Telegram
-➤ /music &lt;name&gt; - MP3 in Telegram
+➤ /play &lt;name&gt;
+➤ /song &lt;name&gt;
+➤ /music &lt;name&gt;
 ➤ /video &lt;name&gt;
-➤ /movie &lt;name&gt; - LINK to watch
-➤ /film &lt;name&gt; - LINK to watch
+➤ /movie &lt;name&gt;
+➤ /film &lt;name&gt;
 ➤ /tiktok &lt;link&gt;
 ➤ /instagram &lt;link&gt;
 ➤ /facebook &lt;link&gt;
 ➤ /pinterest &lt;search&gt;
 ➤ /spotify &lt;name&gt;
 ➤ /apk &lt;name&gt;
-╰──────────────╯`;
+╰──────────────╯
+
+Type /menu2 for FULL menu 👇`;
 const MENU2 = `🎧 <b>AUDIO</b>
 ╭──────────────╮
 ➤ /tts &lt;text&gt;
-➤ /bass /deep /blown /fast /slow
-➤ /nightcore /robot /echo /reverb
+➤ /bass
+➤ /deep
+➤ /blown
+➤ /fast
+➤ /slow
+➤ /nightcore
+➤ /robot
+➤ /echo
+➤ /reverb
 ╰──────────────╯
 
 🎨 <b>CONVERTER</b>
 ╭──────────────╮
-➤ /sticker /toimg /removebg /upscale
-➤ /attp &lt;text&gt; /qc &lt;text&gt; /emojimix
-➤ /blur /meme /getpp /wasted /circle
-➤ /ttp &lt;text&gt; /brat &lt;text&gt;
+➤ /sticker
+➤ /toimg
+➤ /removebg
+➤ /upscale
+➤ /attp &lt;text&gt;
+➤ /qc &lt;text&gt;
+➤ /emojimix
+➤ /blur
+➤ /meme
+➤ /getpp
+➤ /wasted
+➤ /circle
+➤ /ttp &lt;text&gt;
+➤ /brat &lt;text&gt;
 ╰──────────────╯
 
 🖌️ <b>LOGO MAKER</b>
 ╭──────────────╮
-➤ /fancy /neon /metallic /fire /glitch
-➤ /thunder /hacker /marvel /avenger
+➤ /fancy &lt;text&gt;
+➤ /neon &lt;text&gt;
+➤ /metallic &lt;text&gt;
+➤ /fire &lt;text&gt;
+➤ /glitch &lt;text&gt;
+➤ /thunder &lt;text&gt;
+➤ /hacker &lt;text&gt;
+➤ /marvel &lt;text&gt;
+➤ /avenger &lt;text&gt;
 ╰──────────────╯
 
 🛠️ <b>TOOLS</b>
 ╭──────────────╮
-➤ /ss &lt;link&gt; /translate &lt;text&gt; /qr &lt;text&gt;
-➤ /shorturl &lt;link&gt; /calc &lt;math&gt;
-➤ /weather &lt;city&gt; /lyrics &lt;song&gt;
-➤ /currency /crypto /age &lt;date&gt;
-➤ /reverse /palindrome /wiki /google
-➤ /imdb /define /horoscope /quran
+➤ /ss &lt;link&gt;
+➤ /translate &lt;text&gt;
+➤ /qr &lt;text&gt;
+➤ /shorturl &lt;link&gt;
+➤ /calc &lt;math&gt;
+➤ /weather &lt;city&gt;
+➤ /lyrics &lt;song&gt;
+➤ /currency
+➤ /crypto
+➤ /age &lt;date&gt;
+➤ /reverse &lt;text&gt;
+➤ /palindrome &lt;text&gt;
+➤ /wiki &lt;search&gt;
+➤ /google &lt;search&gt;
+➤ /imdb &lt;movie&gt;
+➤ /define &lt;word&gt;
+➤ /horoscope
+➤ /quran
 ➤ /prayertime &lt;city&gt;
 ╰──────────────╯
 
 🧮 <b>CALCULATOR - REAL BRAIN</b>
 ╭──────────────╮
-➤ /calc &lt;math&gt; - ALL signs work!
-➤ /add /sub /mul /div /sqrt
-➤ /square /cube /pow /percent /factorial
-➤ /sin /cos /tan /log /ln
+➤ /calc &lt;math&gt;
+➤ /add &lt;num&gt; &lt;num&gt;
+➤ /sub &lt;num&gt; &lt;num&gt;
+➤ /mul &lt;num&gt; &lt;num&gt;
+➤ /div &lt;num&gt; &lt;num&gt;
+➤ /sqrt &lt;num&gt;
+➤ /square &lt;num&gt;
+➤ /cube &lt;num&gt;
+➤ /pow &lt;num&gt; &lt;num&gt;
+➤ /percent &lt;num&gt; &lt;num&gt;
+➤ /factorial &lt;num&gt;
+➤ /sin &lt;num&gt;
+➤ /cos &lt;num&gt;
+➤ /tan &lt;num&gt;
+➤ /log &lt;num&gt;
+➤ /ln &lt;num&gt;
 ╰──────────────╯
 
 🕵️ <b>STALK</b>
 ╭──────────────╮
-➤ /gitstalk /npmstalk /tgstalk /xstalk
+➤ /gitstalk &lt;username&gt;
+➤ /npmstalk &lt;package&gt;
+➤ /tgstalk &lt;username&gt;
 ╰──────────────╯
 
 🎮 <b>GAMES</b>
 ╭──────────────╮
-➤ /trivia /riddle /truth /dare /wyr
-➤ /rps /8ball /dice /coin /random /pick /guess
+➤ /trivia
+➤ /riddle
+➤ /truth
+➤ /dare
+➤ /wyr
+➤ /rps
+➤ /8ball &lt;question&gt;
+➤ /dice
+➤ /coin
+➤ /random
+➤ /pick &lt;a,b&gt;
+➤ /guess
 ╰──────────────╯
 
 😂 <b>FUN</b>
 ╭──────────────╮
-➤ /joke /fact /quote /compliment /insult
-➤ /roast /flirt /ship /stupid /shayari
-➤ /goodnight /iloveyou /couplepp
-➤ /handsome /pretty /waifu
+➤ /joke
+➤ /fact
+➤ /quote
+➤ /compliment
+➤ /insult
+➤ /roast
+➤ /flirt
+➤ /ship
+➤ /stupid
+➤ /shayari
+➤ /goodnight
+➤ /iloveyou
+➤ /couplepp
+➤ /handsome
+➤ /pretty
+➤ /waifu
 ╰──────────────╯
 
 🌸 <b>ANIME</b>
 ╭──────────────╮
-➤ /pokemon /animepic /animewall /wallpaper /animenews
+➤ /pokemon
+➤ /animepic
+➤ /animewall
+➤ /wallpaper
+➤ /animenews
 ╰──────────────╯
 
 ┏━━━━━━━━━━━━━━┓
@@ -135,14 +210,15 @@ Don't panic to be burnt!
 Thanks For Using WOLF MD 🙏
 ┗━━━━━━━━━━━━━━┛`;
 bot.command(['start','menu','help'], async (ctx) => {
-  try { await ctx.replyWithPhoto(DP, { caption: '🐺 WOLF MD 🔥' }); } catch(e){}
-  try { await ctx.reply(MENU1, { parse_mode: 'HTML' }); } catch(e){ await ctx.reply('Menu failed, try /menu again'); }
+  try { await ctx.replyWithPhoto(DP, { caption: MENU1, parse_mode: 'HTML' }); } catch(e){ await ctx.reply(MENU1, { parse_mode: 'HTML' }); }
+});
+bot.command('menu2', async (ctx) => {
   try { await ctx.reply(MENU2, { parse_mode: 'HTML' }); } catch(e){}
 });
 bot.command('owner', (ctx) => ctx.reply('👑 WOLF MD OWNER\n\nName: PROFESSOR COOLGUY\nUsername: @cool.guy.256\nBot: WOLF MD 🐺'));
 bot.command('contact', (ctx) => ctx.reply('📞 Contact Owner: @cool.guy.256\n\nMessage him for help!'));
 bot.command('ping', async (ctx) => { let s=Date.now(); let m=await ctx.reply('🏓 Pinging...'); await ctx.telegram.editMessageText(ctx.chat.id, m.message_id, null, `🏓 Pong!\nSpeed: ${Date.now()-s}ms\nUptime: ${getUptime()}`); });
-bot.command('alive', (ctx) => ctx.reply(`🐺 WOLF MD IS ALIVE! ✅\n\nUptime: ${getUptime()}\nOwner: ${OWNER}\nVersion: v18.0.0`));
+bot.command('alive', (ctx) => ctx.reply(`🐺 WOLF MD IS ALIVE! ✅\n\nUptime: ${getUptime()}\nOwner: ${OWNER}\nVersion: v19.0.0`));
 bot.command('runtime', (ctx) => ctx.reply(`⏱️ Runtime: ${getUptime()}`));
 bot.command('repo', (ctx) => ctx.reply('📦 WOLF MD Repo:\nhttps://github.com/CoolGuy256/WOLF-MD-Telegram-Bot'));
 bot.command('groupinfo', async (ctx) => { if(ctx.chat.type==='private') return ctx.reply('❌ Use this in a group!'); let c = await ctx.getChat(); ctx.reply(`👥 Group Info\n\nName: ${c.title}\nID: ${c.id}\nType: ${c.type}\nMembers: ${await ctx.telegram.getChatMemberCount(ctx.chat.id)}`); });
@@ -301,7 +377,7 @@ bot.command('log', (ctx)=>{ let a=ctx.message.text.split(' ')[1]; ctx.reply(`�
 bot.command('ln', (ctx)=>{ let a=ctx.message.text.split(' ')[1]; ctx.reply(`🧮 ln ${a} = ${Math.log(Number(a))}`); });
 bot.command('gitstalk', async (ctx) => { let u=ctx.message.text.split(' ')[1]; if(!u) return ctx.reply('❌ /gitstalk octocat'); try{ let r=await axios.get(`https://api.github.com/users/${u}`, {timeout:8000}); ctx.replyWithPhoto(r.data.avatar_url, {caption:`🐙 GitHub: ${r.data.login}\nName: ${r.data.name||'N/A'}\nBio: ${r.data.bio||'N/A'}\nFollowers: ${r.data.followers}`}); }catch(e){ ctx.reply('❌ GitHub user not found'); } });
 bot.command('npmstalk', async (ctx) => { let p=ctx.message.text.split(' ')[1]; if(!p) return ctx.reply('❌ /npmstalk telegraf'); try{ let r=await axios.get(`https://registry.npmjs.org/${p}`, {timeout:8000}); ctx.reply(`📦 NPM: ${p}\nVersion: ${r.data['dist-tags'].latest}`); }catch(e){ ctx.reply('❌ Package not found'); } });
-bot.command(['tgstalk','xstalk'], (ctx) => { let u=ctx.message.text.split(' ')[1]||'unknown'; ctx.reply(`🔍 Stalk ${u}:\nhttps://t.me/${u.replace('@','')}`); });
+bot.command('tgstalk', (ctx) => { let u=ctx.message.text.split(' ')[1]||'unknown'; ctx.reply(`🔍 Stalk ${u}:\nhttps://t.me/${u.replace('@','')}`); });
 bot.command('trivia', async (ctx) => { try{ let r=await axios.get('https://opentdb.com/api.php?amount=1&type=multiple', {timeout:8000}); let q=r.data.results[0]; ctx.reply(`🎯 TRIVIA\n\n${q.question}`); }catch(e){ ctx.reply('❌ Trivia busy'); } });
 bot.command('riddle', (ctx) => { let r=[['What has keys but no locks?','A piano 🎹'],['I speak without mouth?','An echo 🔊']]; let x=r[Math.floor(Math.random()*r.length)]; ctx.reply(`🧩 Riddle:\n${x[0]}\n\nAnswer: ${x[1]}`); });
 bot.command('truth', (ctx) => ctx.reply('😇 TRUTH:\nWho is your crush?'));
@@ -333,6 +409,6 @@ bot.command('waifu', async (ctx) => { await ctx.replyWithPhoto(`https://image.po
 bot.command('pokemon', async (ctx) => { let p=['pikachu','charizard','bulbasaur','eevee'][Math.floor(Math.random()*4)]; let r=await axios.get(`https://pokeapi.co/api/v2/pokemon/${p}`, {timeout:8000}); ctx.replyWithPhoto(r.data.sprites.front_default, {caption:`⚡ Pokemon: ${r.data.name.toUpperCase()}`}); });
 bot.command(['animepic','animewall','wallpaper'], async (ctx) => { let styles = ['beautiful anime girl, colorful, high quality', 'anime boy hero, cool, high quality', 'anime landscape wallpaper, beautiful']; let s = styles[Math.floor(Math.random()*styles.length)]; await ctx.replyWithPhoto(`https://image.pollinations.ai/prompt/${encodeURIComponent(s)}?nologo=true&seed=${Math.floor(Math.random()*99999)}`, {caption:'🌸 Anime Wallpaper by WOLF MD 🐺'}); });
 bot.command('animenews', (ctx) => ctx.reply('📰 Anime News:\nhttps://myanimelist.net/news'));
-bot.launch({ dropPendingUpdates: true }).then(()=>console.log('✅ WOLF MD v18 ONLINE!'));
+bot.launch({ dropPendingUpdates: true }).then(()=>console.log('✅ WOLF MD v19 ONLINE!'));
 process.once('SIGINT', ()=>bot.stop('SIGINT'));
 process.once('SIGTERM', ()=>bot.stop('SIGTERM'));
