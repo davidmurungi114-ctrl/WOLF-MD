@@ -8,8 +8,19 @@ const { askBrain } = require('./brain');
 const { registerCalc } = require('./calc');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const arg = (ctx)=> ctx.message.text.split(' ').slice(1).join(' ');
-bot.command('start', async (ctx)=>{ try{ await ctx.replyWithPhoto(DP,{caption:START_MSG}); }catch{ await ctx.reply(START_MSG);} });
-bot.command(['menu','help'], async (ctx)=>{ try{ await ctx.replyWithPhoto(DP,{caption:MENU}); }catch{ await ctx.reply(MENU);} });
+// 🐺 DP + MENU IN SAME PAGE - FIXED! DP ON TOP, MENU UNDER IT!
+bot.command('start', async (ctx)=>{
+  try{ await ctx.replyWithPhoto(DP,{caption:START_MSG}); }
+  catch{ await ctx.reply(START_MSG); }
+});
+bot.command(['menu','help'], async (ctx)=>{
+  try{
+    await ctx.replyWithPhoto(DP,{caption:'🔥 WOLF MD 🔥\nOwner: WOLF | By: PROFESSOR COOLGUY'});
+    await ctx.reply(MENU);
+  }catch{
+    await ctx.reply(MENU);
+  }
+});
 bot.command('owner', (ctx)=> ctx.reply('👑 WOLF MD OWNER\n\nName: PROFESSOR COOLGUY\nUsername: @cool.guy.256\nBot: WOLF MD\nWhatsApp: https://wa.me/256750765838'));
 bot.command('ping', async (ctx)=>{ let s=Date.now(); let m=await ctx.reply('🏓 Pinging...'); await ctx.telegram.editMessageText(ctx.chat.id,m.message_id,null,`🏓 Pong!\nSpeed: ${Date.now()-s}ms\nUptime: ${getUptime()}`); });
 bot.command('alive', (ctx)=> ctx.reply(`🐺 WOLF MD ALIVE! ✅\nUptime: ${getUptime()}\nOwner: PROFESSOR COOLGUY\nVersion: v38.0`));
